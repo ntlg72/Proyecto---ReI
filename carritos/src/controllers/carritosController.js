@@ -26,7 +26,7 @@ router.get('/carritos', async (req, res) => {
 // router.get('/carritovacio', async (req, res) => {
 //     try {
 //         // Obtener el ID del usuario desde el microservicio de productos
-//         const userId = await axios.get('http://192.168.100.2:3001/usuarios/:username'); // Reemplazar con la URL correcta
+//         const userId = await axios.get('http://usuarios:3001/usuarios/:username'); // Reemplazar con la URL correcta
 
 
 //         // Verificar si existe un carrito para este usuario
