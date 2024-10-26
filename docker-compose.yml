@@ -1,30 +1,63 @@
 services:
+  productos_BD:
+    image: mysql:5.7
+    container_name: productos_BD
+    ports:
+      - "32000:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=productos_BD
+    volumes:
+      - ./db/productodb/:/docker-entrypoint-initdb.d
+
+  usuarios_BD:
+    image: mysql:5.7
+    container_name: usuarios_BD
+    ports:
+      - "32001:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=usuarios_BD
+    volumes:
+      - ./db/usuariodb/:/docker-entrypoint-initdb.d
+
+  carritos_BD:
+    image: mysql:5.7
+    container_name: carritos_BD
+    ports:
+      - "32002:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=carritos_BD
+    volumes:
+      - ./db/carritodb/:/docker-entrypoint-initdb.d
+
   usuarios:
     build: ./microservicios/usuarios
     container_name: usuarios
     links:
-      - db
+      - usuarios_BD
     ports:
       - "3001:3001"
-    
+
   productos:
     build: ./microservicios/productos
     container_name: productos
     links:
-      - db
+      - productos_BD
     ports:
       - "3002:3002"
-    
-  ordenes:
+
+  carritos:
     build: ./microservicios/carritos
     container_name: carritos
     links:
-      - db
+      - carritos_BD
       - usuarios
       - productos
     ports:
       - "3003:3003"
-    
+
   web:
     build: ./web
     container_name: web
@@ -37,14 +70,3 @@ services:
     environment:
       - APACHE_RUN_USER=www-data
       - APACHE_RUN_GROUP=www-data
-    
-  db:
-    image: mysql:5.7
-    container_name: db
-    ports:
-      - "32000:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: almacenDB
-    volumes:
-      - ./db:/docker-entrypoint-initdb.d
