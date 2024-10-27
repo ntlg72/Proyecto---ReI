@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS carritos_BD;
 
 USE carritos_BD;
 
-CREATE TABLE carritos (
+CREATE TABLE IF NOT EXISTS carritos (
   id_carrito INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   subtotal FLOAT,
   precioEnvio FLOAT,
