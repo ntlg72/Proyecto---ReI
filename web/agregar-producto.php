@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     // Llamada a la API para crear un nuevo producto
-    $productos_url = "http://localhost:3002/productos";
+    $productos_url = "http://productos:3002/productos";
     $options = array(
         'http' => array(
             'header'  => "Content-type: application/json\r\n",

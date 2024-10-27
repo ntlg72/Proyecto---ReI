@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 // Llamar a la API de productos para obtener la lista de productos
-$urlProductos = "http://localhost:3002/productos"; // URL de tu API de productos
+$urlProductos = "http://productos:3002/productos"; // URL de tu API de productos
 $response = file_get_contents($urlProductos);
 
 if ($response === false) {
@@ -21,7 +21,7 @@ if ($response === false) {
 $productos = json_decode($response, true);
 
 // Obtener categorías desde la API
-$urlCategorias = "http://localhost:3002/categorias"; // URL de tu API de categorías
+$urlCategorias = "http://productos:3002/categorias"; // URL de tu API de categorías
 $responseCategorias = file_get_contents($urlCategorias);
 
 if ($responseCategorias === false) {
@@ -157,7 +157,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
             $product_id = htmlspecialchars($_POST['searchProductId']);
             
             // Llamar API para obtener producto
-            $productos_url = "http://localhost:3002/productos/$product_id";
+            $productos_url = "http://productos:3002/productos/$product_id";
             $curl = curl_init($productos_url);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($curl);
@@ -218,7 +218,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
         // Filtrar productos por categoría seleccionada
         if (isset($_POST['selectedCategory'])) {
             $selected_category = htmlspecialchars($_POST['selectedCategory']);
-            $productos_url = "http://localhost:3002/productos/categoria/$selected_category"; 
+            $productos_url = "http://productos:3002/productos/categoria/$selected_category"; 
             $response = file_get_contents($productos_url);
             $productos = json_decode($response, true);
 
@@ -253,7 +253,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
             <div class="card-body">
                 <?php
                 // URL del servicio API para obtener los productos
-                $productos_url = "http://localhost:3002/productos/desc";
+                $productos_url = "http://productos:3002/productos/desc";
                 $curl = curl_init($productos_url);
 
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
