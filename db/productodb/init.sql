@@ -3,7 +3,7 @@ CREATE DATABASE productos_BD;
 USE productos_BD;
 
 
-CREATE TABLE productos (
+CREATE TABLE IF NOT EXISTS productos (
     product_id INT PRIMARY KEY AUTO_INCREMENT,
     product_category VARCHAR(50),
     product_name VARCHAR(100),
