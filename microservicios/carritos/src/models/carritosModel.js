@@ -5,8 +5,8 @@ const axios = require('axios');
 const connection = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: '',
-    port: '3307',
+    password: 'root',
+    port: '3306',
     database: 'carritos_BD'
 });
 
