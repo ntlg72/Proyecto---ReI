@@ -3,7 +3,7 @@ const axios = require('axios');
 
 
 const connection = mysql.createPool({
-    host: 'db',
+    host: 'carritos_BD',
     user: 'root',
     password: 'root',
     port: '3306',
