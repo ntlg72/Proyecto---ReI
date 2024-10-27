@@ -26,7 +26,7 @@ router.get('/carritos', async (req, res) => {
 // router.get('/carritovacio', async (req, res) => {
 //     try {
 //         // Obtener el ID del usuario desde el microservicio de productos
-//         const userId = await axios.get('http://usuarios:3001/usuarios/:username'); // Reemplazar con la URL correcta
+//         const userId = await axios.get('http://192.168.100.2:3001/usuarios/:username'); // Reemplazar con la URL correcta
 
 
 //         // Verificar si existe un carrito para este usuario
@@ -125,6 +125,30 @@ router.get('/facturas', async (req, res) => {
     result = await carritosModel.traerFacturas();
     res.json(result);
 });
+
+// Obtener facturas por ciudad
+router.get('/facturas/ciudad/:ciudad', async (req, res) => {
+    const ciudad = req.params.ciudad;
+    try {
+        const facturas = await carritosModel.traerFacturasCiudad(ciudad);
+        res.json(facturas);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al obtener las facturas por ciudad');
+    }
+});
+
+// Obtener todas las ciudades disponibles
+router.get('/ciudades', async (req, res) => {
+    try {
+        const ciudades = await carritosModel.traerCiudad(); // Llama a la nueva función para obtener ciudades
+        res.json(ciudades); // Devuelve las ciudades en formato JSON
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al obtener las ciudades');
+    }
+});
+
 
 // Controller para eliminar un producto del carrito
 router.delete('/carrito/eliminar', async (req, res) => {

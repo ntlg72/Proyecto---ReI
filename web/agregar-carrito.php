@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Llamar a la API de carritos para agregar el producto
     $username = $_SESSION['username'];
-    $urlCarrito = "http://192.168.100.2:3003/carrito/add"; // URL de la API de carritos
+    $urlCarrito = "http://localhost:3003/carrito/add"; // URL de la API de carritos
 
     // Datos a enviar
     $data = [

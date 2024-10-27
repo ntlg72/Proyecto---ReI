@@ -4,7 +4,7 @@ const connection = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    port:'3306',
+    port:'3307',
     database: 'usuarios_BD'
 });
 
@@ -24,8 +24,8 @@ async function traerUsuario(username) {
 
 
 async function validarUsuario(username, password) {
-    const result = await connection.query('SELECT * FROM usuarios WHERE username = ? AND password = ?', [username, password]);
-    return result[0];
+    const [result] = await connection.query('SELECT * FROM usuarios WHERE username = ? AND password = ?', [username, password]);
+    return result.length > 0 ? result[0] : null; // Devuelve null si no se encuentra el usuario
 }
 
 

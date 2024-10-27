@@ -24,5 +24,6 @@ CREATE TABLE productos (
     product_category VARCHAR(50),
     product_name VARCHAR(100),
     product_stock INT,
-    unit_price_cop DECIMAL(10,2)
+    unit_price_cop DECIMAL(10,2),
+    product_url VARCHAR(200)
 );
