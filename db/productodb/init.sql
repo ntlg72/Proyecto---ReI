@@ -1,4 +1,4 @@
-CREATE DATABASE productos_BD;
+CREATE DATABASE IF NOT EXISTS productos_BD;
 
 USE productos_BD;
 
