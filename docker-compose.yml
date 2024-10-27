@@ -64,7 +64,7 @@ services:
     links:
       - usuarios
       - productos
-      - ordenes
+      - carritos
     ports:
       - "8080:80"
     environment:
