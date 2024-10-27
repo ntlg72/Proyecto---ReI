@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS productos (
     product_name VARCHAR(100),
     product_stock INT,
     unit_price_cop DECIMAL(10,2),
-    product_url VARCHAR(200)
+    product_url VARCHAR(500)
 );
 
 USE productos_BD;

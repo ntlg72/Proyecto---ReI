@@ -12,7 +12,7 @@ const connection = mysql.createPool({
 
 async function crearUsuario(username,email,nombre,password,customer_city,direccion,documento_de_identidad) {
 
-    const result = await connection.query('INSERT INTO usuarios VALUES(?,?,?,?,?,?,?)', [username,email,nombre,password,customer_city,direccion,documento_de_identidad]);
+    const result = await connection.query('INSERT INTO usuarioss VALUES(?,?,?,?,?,?,?)', [username,email,nombre,password,customer_city,direccion,documento_de_identidad]);
     return result;
 }
 
