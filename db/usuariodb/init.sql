@@ -2,7 +2,7 @@ CREATE DATABASE usuarios_BD;
 
 USE usuarios_BD;
 
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
 
     username VARCHAR(50) PRIMARY KEY,
     email VARCHAR(100),
