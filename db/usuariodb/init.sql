@@ -1,4 +1,4 @@
-CREATE DATABASE usuarios_BD;
+CREATE DATABASE IF NOT EXISTS usuarios_BD;
 
 USE usuarios_BD;
 
