@@ -1,8 +1,13 @@
+
+
 # Proyecto: Redes e Infraestructura
 
 [Miche Burgos Santos](https://github.com/Michelburgos)
+
 [Juan David Daza Rivera](https://github.com/JuanDavidDazaR)
+
 [Esmeralda Erazo Varela](https://github.com/memerazo)
+
 [Natalia López Gallego](https://github.com/ntlg72)
 
 ## Descripción
