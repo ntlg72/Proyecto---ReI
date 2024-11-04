@@ -2,7 +2,7 @@
 
 # Proyecto: Redes e Infraestructura
 
-[Miche Burgos Santos](https://github.com/Michelburgos)
+[Michel Burgos Santos](https://github.com/Michelburgos)
 
 [Juan David Daza Rivera](https://github.com/JuanDavidDazaR)
 
