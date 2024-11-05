@@ -3,9 +3,9 @@ import subprocess
 
 # Lista de scripts a ejecutar
 scripts = [
-    'db/carritodb/carga_datos_factura.py',
+    'db/carritodb/cargar_datos_factura.py',
     'db/productodb/carga_datos_productos.py',
-    'db/carritodb/carga_datos_items_facturas.py',
+    'db/carritodb/cargar_datos_items_factura.py',
     'db/usuariodb/carga_datos_usuarios.py'
 ]
 
