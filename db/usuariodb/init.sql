@@ -15,17 +15,17 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 USE usuarios_BD;
 
-INSERT INTO usuarioss VALUES ('sarah.patten5382', 'andresperez@example.net', 'Sarah Patten', 'BunTSIhw@5', 'Cartagena', 'Carrera 56 # 65-9 Este, Toro, 135417', '5880080462');
-INSERT INTO usuarioss VALUES ('paul.melo9154', 'mariabeltran@example.com', 'Paul Melo', 'J&6br9Cm&Q', 'Bogota', 'Av. calle 3ª # 33J-5 Sur, San José, 193032', '8672399976');
-INSERT INTO usuarioss VALUES ('sandra.millsap3216', 'gonzalolopez@example.net', 'Sandra Millsap', '$A4@a5Wcn+', 'Medellin', 'Cr. 36 # 95-4, San José del Guaviare, 867147', '205409756');
-INSERT INTO usuarioss VALUES ('jean.andrews9175', 'avalencia@example.org', 'Jean Andrews', '%H%)1Lzc!L', 'Bogota', 'Cl. 16 # 8U-4 Este, Mosquera, 505803', '8893319425');
-INSERT INTO usuarioss VALUES ('eileen.kemp6076', 'garroyo@example.net', 'Eileen Kemp', '&50#)fHtyJ', 'Medellin', 'Calle 23 # 19-14 Sur, Repelón, 447891', '8635290031');
-INSERT INTO usuarioss VALUES ('matthew.sullivan8291', 'monsalveleidy@example.org', 'Matthew Sullivan', 'I27YAzMo@m', 'Cartagena', 'Diagonal 9W # 44-42, Bochalema, 544994', '1798581269');
-INSERT INTO usuarioss VALUES ('janet.hughes6270', 'caroalejandra@example.org', 'Janet Hughes', '9kXnS%n@$P', 'Cartagena', 'Tr. 3ª # 36-87 Sur, Soracá, 502135', '7794801178');
-INSERT INTO usuarioss VALUES ('joe.peele8967', 'rodriguezluis@example.net', 'Joe Peele', 'k2TGa@3&$N', 'Medellin', 'Calle 169O # 9-7 Este, Cucunubá, 667972', '8386733230');
-INSERT INTO usuarioss VALUES ('elene.namdar9504', 'carlos27@example.org', 'Elene Namdar', 'hw)dAiBa*9', 'Cali', 'Cr. 40 # 6Y-9, Lourdes, 273935', '7703842001');
-INSERT INTO usuarioss VALUES ('alisia.mathew4449', 'angelicaprada@example.com', 'Alisia Mathew', 'X7AnkuIb*a', 'Cali', 'Calle 48X # 5-8 Este, Milán, 179109', '937999735');
-INSERT INTO usuarioss VALUES ('silva.meyer9093', 'rosasalazar@example.com', 'Silva Meyer', '^E9QN6Wd4l', 'Cali', 'Carrera 32 # 2-33, Cáceres, 277836', '6279009646');
+INSERT INTO usuarios VALUES ('sarah.patten5382', 'andresperez@example.net', 'Sarah Patten', 'BunTSIhw@5', 'Cartagena', 'Carrera 56 # 65-9 Este, Toro, 135417', '5880080462');
+INSERT INTO usuarios VALUES ('paul.melo9154', 'mariabeltran@example.com', 'Paul Melo', 'J&6br9Cm&Q', 'Bogota', 'Av. calle 3ª # 33J-5 Sur, San José, 193032', '8672399976');
+INSERT INTO usuarios VALUES ('sandra.millsap3216', 'gonzalolopez@example.net', 'Sandra Millsap', '$A4@a5Wcn+', 'Medellin', 'Cr. 36 # 95-4, San José del Guaviare, 867147', '205409756');
+INSERT INTO usuarios VALUES ('jean.andrews9175', 'avalencia@example.org', 'Jean Andrews', '%H%)1Lzc!L', 'Bogota', 'Cl. 16 # 8U-4 Este, Mosquera, 505803', '8893319425');
+INSERT INTO usuarios VALUES ('eileen.kemp6076', 'garroyo@example.net', 'Eileen Kemp', '&50#)fHtyJ', 'Medellin', 'Calle 23 # 19-14 Sur, Repelón, 447891', '8635290031');
+INSERT INTO usuarios VALUES ('matthew.sullivan8291', 'monsalveleidy@example.org', 'Matthew Sullivan', 'I27YAzMo@m', 'Cartagena', 'Diagonal 9W # 44-42, Bochalema, 544994', '1798581269');
+INSERT INTO usuarios VALUES ('janet.hughes6270', 'caroalejandra@example.org', 'Janet Hughes', '9kXnS%n@$P', 'Cartagena', 'Tr. 3ª # 36-87 Sur, Soracá, 502135', '7794801178');
+INSERT INTO usuarios VALUES ('joe.peele8967', 'rodriguezluis@example.net', 'Joe Peele', 'k2TGa@3&$N', 'Medellin', 'Calle 169O # 9-7 Este, Cucunubá, 667972', '8386733230');
+INSERT INTO usuarios VALUES ('elene.namdar9504', 'carlos27@example.org', 'Elene Namdar', 'hw)dAiBa*9', 'Cali', 'Cr. 40 # 6Y-9, Lourdes, 273935', '7703842001');
+INSERT INTO usuarios VALUES ('alisia.mathew4449', 'angelicaprada@example.com', 'Alisia Mathew', 'X7AnkuIb*a', 'Cali', 'Calle 48X # 5-8 Este, Milán, 179109', '937999735');
+INSERT INTO usuarios VALUES ('silva.meyer9093', 'rosasalazar@example.com', 'Silva Meyer', '^E9QN6Wd4l', 'Cali', 'Carrera 32 # 2-33, Cáceres, 277836', '6279009646');
 INSERT INTO usuarios VALUES ('venus.abbott2219', 'sepulvedaerika@example.net', 'Venus Abbott', 'C87CpyS5%f', 'Bogota', 'Carrera 69C # 8-2 Este, Palestina, 731352', '7289896693');
 INSERT INTO usuarios VALUES ('ruth.cuthill8859', 'uhernandez@example.org', 'Ruth Cuthill', 'j_F+i0Sr9U', 'Cartagena', 'Calle 113 # 4-4 Sur, Chita, 881811', '7448262431');
 INSERT INTO usuarios VALUES ('richard.humphrey5211', 'espitiamireya@example.org', 'Richard Humphrey', '*kV_70GlTP', 'Cali', 'Cl. 37 # 29-7, Ubalá, 859928', '3083718347');
