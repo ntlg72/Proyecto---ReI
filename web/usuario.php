@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 // Llamar a la API de productos para obtener la lista de productos
-$urlProductos = "http://productos:3002/productos"; // URL de tu API de productos
+$urlProductos = "http://localhost:3002/productos"; // URL de tu API de productos
 $response = file_get_contents($urlProductos);
 
 if ($response === false) {
@@ -21,7 +21,7 @@ if ($response === false) {
 $productos = json_decode($response, true);
 
 // Obtener categorías desde la API
-$urlCategorias = "http://productos:3002/categorias"; // URL de tu API de categorías
+$urlCategorias = "http://localhost:3002/categorias"; // URL de tu API de categorías
 $responseCategorias = file_get_contents($urlCategorias);
 
 if ($responseCategorias === false) {
@@ -274,7 +274,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     // Filtrar productos por categoría seleccionada
     if (isset($_POST['selectedCategory']) && $_POST['selectedCategory'] !== "") {
         $selected_category = htmlspecialchars($_POST['selectedCategory']);
-        $productos_url = "http://productos:3002/productos/categoria/$selected_category"; 
+        $productos_url = "http://localhost:3002/productos/categoria/$selected_category"; 
         $response = file_get_contents($productos_url);
         $productos = json_decode($response, true);
 
@@ -294,7 +294,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
         // Reemplazar '+' por '%20'
         $encoded_product_name = str_replace('+', '%20', $encoded_product_name);
 
-        $productos_url = "http://productos:3002/productos/nombre/$encoded_product_name"; 
+        $productos_url = "http://localhost:3002/productos/nombre/$encoded_product_name"; 
 
         $response = file_get_contents($productos_url);
         
@@ -303,6 +303,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
             echo '<p>Error al hacer la solicitud a la API.</p>';
         } else {
             // Ver la respuesta cruda para depuración
+            echo "Respuesta de la API: $response<br>";
 
             // Decodificar la respuesta JSON
             $producto = json_decode($response, true);
@@ -346,7 +347,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
     // Fetch and display all products if the "Ver todos los productos" button is clicked
     if (isset($_GET['view_all']) || (empty($_POST['selectedCategory']) && empty($productos))) {
-        $productos_url = "http://productos:3002/productos"; // URL to fetch all products
+        $productos_url = "http://localhost:3002/productos"; // URL to fetch all products
         $response = file_get_contents($productos_url);
         $productos = json_decode($response, true);
 

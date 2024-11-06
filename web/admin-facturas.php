@@ -63,8 +63,15 @@
         .form-select {
             border-radius: 8px;
         }
-        .table th, .table td {
-            vertical-align: middle;
+        table {
+        width: 100%;
+        table-layout: fixed;
+        }
+
+        th, td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         }
     </style>
 </head>
@@ -83,7 +90,7 @@
                         <option value="">Selecciona una Ciudad</option>
                         <?php
                         // Obtener ciudades desde el backend
-                        $ciudades_url = "http://carritos:3003/ciudades"; // URL para obtener ciudades
+                        $ciudades_url = "http://localhost:3003/ciudades"; // URL para obtener ciudades
                         $curl = curl_init($ciudades_url);
                         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                         $response = curl_exec($curl);
@@ -113,7 +120,7 @@
         // Filtrar facturas por ciudad seleccionada
         if (isset($_POST['selectedCity'])) {
             $ciudad = htmlspecialchars($_POST['selectedCity']);
-            $facturas_url = "http://carritos:3003/facturas/ciudad/$ciudad"; // URL para obtener facturas filtradas por ciudad
+            $facturas_url = "http://localhost:3003/facturas/ciudad/$ciudad"; // URL para obtener facturas filtradas por ciudad
             $response = file_get_contents($facturas_url);
             $facturas = json_decode($response, true);
 
@@ -162,7 +169,7 @@
             echo '<div class="card-header">Facturas Disponibles</div>';
             echo '<div class="card-body">';
             // URL del servicio API para obtener las facturas
-            $facturas_url = "http://carritos:3003/facturas";
+            $facturas_url = "http://localhost:3003/facturas";
             $curl = curl_init($facturas_url);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($curl);

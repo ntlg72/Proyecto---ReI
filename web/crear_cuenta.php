@@ -147,7 +147,7 @@
                 ];
 
                 $context  = stream_context_create($options);
-                $result = @file_get_contents('http://usuarios:3001/usuarios/crear', false, $context);
+                $result = @file_get_contents('http://localhost:3001/usuarios/crear', false, $context);
 
                 if ($result === FALSE) {
                     echo '<div class="text-danger">Error al intentar crear la cuenta</div>';

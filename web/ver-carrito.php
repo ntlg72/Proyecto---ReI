@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 // Obtener items del carrito de la API
-$urlCarritoItems = "http://carritos:3003/carrito/items/" . urlencode($username);
+$urlCarritoItems = "http://localhost:3003/carrito/items/" . urlencode($username);
 
 $options = [
     'http' => [
@@ -38,7 +38,7 @@ if (isset($carritoItems['items']) && !empty($carritoItems['items'])) {
 }
 
 // Obtener detalles del carrito
-$urlCarritoDetails = "http://carritos:3003/carritos/" . urlencode($carrito_id);
+$urlCarritoDetails = "http://localhost:3003/carritos/" . urlencode($carrito_id);
 $responseDetails = @file_get_contents($urlCarritoDetails, false, $context);
 if ($responseDetails === false) {
     $error = error_get_last();
@@ -60,7 +60,7 @@ $carrito = [
 // Eliminar un producto del carrito
 if (isset($_POST['action']) && $_POST['action'] === 'eliminar') {
     $product_id = $_POST['product_id'];
-    $urlEliminar = "http://carritos:3003/carrito/eliminar";
+    $urlEliminar = "http://localhost:3003/carrito/eliminar";
     $data = ['username' => $username, 'productId' => $product_id];
 
     $options = [
@@ -85,7 +85,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'eliminar') {
 
 // Vaciar el carrito
 if (isset($_POST['action']) && $_POST['action'] === 'vaciar') {
-    $urlVaciar = "http://carritos:3003/carrito/vaciar";
+    $urlVaciar = "http://localhost:3003/carrito/vaciar";
     $data = ['cartId' => $carrito_id];
 
     $options = [
@@ -116,7 +116,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'modificar') {
         echo 'Cantidad inválida';
         exit();
     }
-    $urlModificar = "http://carritos:3003/carrito/actualizar";
+    $urlModificar = "http://localhost:3003/carrito/actualizar";
     $data = ['username' => $username, 'product_id' => $product_id, 'quantity' => $cantidad];
     
     $options = [
@@ -140,7 +140,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'modificar') {
 
 // Función para crear la factura
 if (isset($_POST['action']) && $_POST['action'] === 'facturar') {
-    $urlFacturar = "http://carritos:3003/factura/crear";
+    $urlFacturar = "http://localhost:3003/factura/crear";
     
     $data = [
         'username' => $username,

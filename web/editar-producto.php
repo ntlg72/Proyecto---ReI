@@ -4,7 +4,7 @@ if (isset($_GET['id'])) {
     $product_id = $_GET['id'];
     
     // Obtener los datos del producto desde la base de datos o API
-    $productos_url = "http://productos:3002/productos/$product_id";
+    $productos_url = "http://localhost:3002/productos/$product_id";
     $curl = curl_init($productos_url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($curl);

@@ -10,7 +10,7 @@ if (isset($data['username']) && isset($data['password'])) {
     $user = $data['username'];
     $pass = $data['password'];
 
-    $servurl = "http://usuarios:3001/login";
+    $servurl = "http://localhost:3001/login";
     $curl = curl_init($servurl);
     
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
