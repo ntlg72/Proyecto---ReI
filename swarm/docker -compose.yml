@@ -1,8 +1,9 @@
 version: '3.8'
 
 services:
+
   productos_BD:
-    image: ntlg2/proy-productodb:latest
+    image: michelb16/proy-productodb
     deploy:
       replicas: 1
     ports:
@@ -10,9 +11,11 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=productos_BD
+    volumes:
+      - ./db/productodb/:/docker-entrypoint-initdb.d
 
   usuarios_BD:
-    image: ntlg2/proy-usuariodb:latest
+    image: michelb16/proy-usuariodb
     deploy:
       replicas: 1
     ports:
@@ -20,9 +23,11 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=usuarios_BD
+    volumes:
+      - ./db/usuariodb/:/docker-entrypoint-initdb.d
 
   carritos_BD:
-    image: ntlg2/proy-carritodb:latest
+    image: michelb16/proy-carritodb
     deploy:
       replicas: 1
     ports:
@@ -30,6 +35,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=carritos_BD
+    volumes:
+      - ./db/carritodb:/docker-entrypoint-initdb.d
 
   usuarios:
     image: michelb16/proy-usuarios
@@ -91,7 +98,7 @@ services:
       - carritos
 
   haproxy:
-    image: ntlg2/proy-haproxy:latest
+    image: haproxy:latest
     deploy:
       replicas: 1
       placement:
@@ -99,6 +106,8 @@ services:
           - node.labels.type == servidorUbuntu
     ports:
       - "8080:80"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     depends_on:
       - web1
       - web2
