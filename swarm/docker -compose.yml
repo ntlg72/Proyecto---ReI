@@ -98,7 +98,7 @@ services:
       - carritos
 
   haproxy:
-    image: haproxy:latest
+    image: ntlg2/proy-haproxy:latest
     deploy:
       replicas: 1
       placement:
@@ -106,8 +106,6 @@ services:
           - node.labels.type == servidorUbuntu
     ports:
       - "8080:80"
-    volumes:
-      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     depends_on:
       - web1
       - web2
