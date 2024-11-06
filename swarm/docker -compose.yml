@@ -11,8 +11,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=productos_BD
-    volumes:
-      - ./db/productodb/:/docker-entrypoint-initdb.d
 
   usuarios_BD:
     image: michelb16/proy-usuariodb
@@ -23,8 +21,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=usuarios_BD
-    volumes:
-      - ./db/usuariodb/:/docker-entrypoint-initdb.d
 
   carritos_BD:
     image: michelb16/proy-carritodb
@@ -35,8 +31,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=carritos_BD
-    volumes:
-      - ./db/carritodb:/docker-entrypoint-initdb.d
 
   usuarios:
     image: michelb16/proy-usuarios
