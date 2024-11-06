@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  productos_BD:
+    image: ntlg2/proy-productodb:latest
+    deploy:
+      replicas: 1
+    ports:
+      - "32000:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=productos_BD
+
+  usuarios_BD:
+    image: ntlg2/proy-usuariodb:latest
+    deploy:
+      replicas: 1
+    ports:
+      - "32001:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=usuarios_BD
+
+  carritos_BD:
+    image: ntlg2/proy-carritodb:latest
+    deploy:
+      replicas: 1
+    ports:
+      - "32002:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=carritos_BD
+
+  usuarios:
+    image: michelb16/proy-usuarios
+    deploy:
+      replicas: 1
+    ports:
+      - "3001:3001"
+    depends_on:
+      - usuarios_BD
+
+  productos:
+    image: michelb16/proy-productos
+    deploy:
+      replicas: 1
+    ports:
+      - "3002:3002"
+    depends_on:
+      - productos_BD
+
+  carritos:
+    image: michelb16/proy-carritos
+    deploy:
+      replicas: 1
+    ports:
+      - "3003:3003"
+    depends_on:
+      - carritos_BD
+      - usuarios
+      - productos
+
+  web1:
+    image: michelb16/proy-web
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.type == clienteUbuntu
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+    depends_on:
+      - usuarios
+      - productos
+      - carritos
+
+  web2:
+    image: michelb16/proy-web
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.type == clienteUbuntu
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+    depends_on:
+      - usuarios
+      - productos
+      - carritos
+
+  haproxy:
+    image: ntlg2/proy-haproxy:latest
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.type == servidorUbuntu
+    ports:
+      - "8080:80"
+    depends_on:
+      - web1
+      - web2
+
+  python_scripts:
+    image: michelb16/proy-scripts
+    deploy:
+      replicas: 1
+    depends_on:
+      - carritos_BD
+      - productos_BD
+      - usuarios_BD
