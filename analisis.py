@@ -1,4 +1,3 @@
-
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import month, year, count, concat, lit, lpad, sum, when
 import matplotlib.pyplot as plt
@@ -80,7 +79,7 @@ bars = plt.bar(facturas_por_mes_pd['año_mes'], facturas_por_mes_pd['frecuencia'
 # Mostrar valores encima de cada barra
 for bar in bars:
     yval = bar.get_height()
-    plt.text(bar.get_x() + bar.get_width() / 2, yval + 1, f'{yval:.0f}', ha='center', va='bottom', 
+    plt.text(bar.get_x() + bar.get_width() / 2, yval + 1, f'{yval:.0f}', ha='center', va='bottom',
              fontsize=10, color='#34495E', weight='bold')
 
 
@@ -114,7 +113,6 @@ plt.savefig(output_facturas_path)
 ventas_por_ciudad = facturas_df.groupBy("ciudad").agg(sum("total").alias("total_ventas"))
 ventas_por_ciudad_pd = ventas_por_ciudad.toPandas()
 
-
 # Añadir coordenadas de las ciudades
 coordenadas = {
     'Medellin': {'lat': 6.2442, 'lon': -75.5812},
@@ -125,42 +123,38 @@ coordenadas = {
 ventas_por_ciudad_pd['latitud'] = ventas_por_ciudad_pd['ciudad'].map(lambda x: coordenadas[x]['lat'])
 ventas_por_ciudad_pd['longitud'] = ventas_por_ciudad_pd['ciudad'].map(lambda x: coordenadas[x]['lon'])
 
-
 # Conversión del campo 'total_ventas' a un tipo numérico
 ventas_por_ciudad_pd['total_ventas'] = pd.to_numeric(ventas_por_ciudad_pd['total_ventas'], errors='coerce')
 
+# Filtrar datos no válidos (si existen)
+ventas_por_ciudad_pd = ventas_por_ciudad_pd.dropna(subset=['total_ventas'])
 
-# Crear el mapa con Plotly
+# Crear el mapa con Plotly y personalizar el texto de hover
 fig = px.scatter_mapbox(
     ventas_por_ciudad_pd,
     lat="latitud",
     lon="longitud",
-    size=ventas_por_ciudad_pd['total_ventas'].values,  # Utiliza .values para convertir a un arreglo
+    size="total_ventas",
     color="ciudad",
     mapbox_style="carto-positron",
-    zoom=3,
-    center={"lat": 4.7110, "lon": -74.0721}  # Centrado en Colombia
+    zoom=5,
+    center={"lat": 4.7110, "lon": -74.0721},
+    size_max=50,
+    hover_name="ciudad",
+    hover_data={"latitud": True, "longitud": True, "total_ventas": True}
 )
 
-
-# Resaltar las ciudades específicas
+# Resaltar las ciudades específicas con colores personalizados
 fig.update_traces(marker=dict(size=12, color='red'), selector=dict(name="Medellin"))
 fig.update_traces(marker=dict(size=12, color='blue'), selector=dict(name="Bogota"))
 fig.update_traces(marker=dict(size=12, color='green'), selector=dict(name="Cali"))
 fig.update_traces(marker=dict(size=12, color='purple'), selector=dict(name="Cartagena"))
 
-
 # Definir el path de salida
 output_ventas_path = '/vagrant/ventas_por_ciudad.html'
-
-
-# Guardar el gráfico como HTML
 fig.write_html(output_ventas_path)
 
-
-# Mostrar el gráfico
-fig.show()
-
+print(f"Mapa generado y guardado en {output_ventas_path}")
 
 
 
