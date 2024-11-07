@@ -75,6 +75,9 @@ services:
       - usuarios
       - productos
       - carritos
+    volumes:
+      - /vagrant:/var/www/html/images
+
 
   web2:
     image: michelb16/proy-web
@@ -90,6 +93,9 @@ services:
       - usuarios
       - productos
       - carritos
+    volumes:
+      - /vagrant:/var/www/html/images
+
 
   haproxy:
     image: ntlg2/proy-haproxy:latest
