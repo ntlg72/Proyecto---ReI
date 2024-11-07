@@ -109,9 +109,13 @@ plt.savefig(output_facturas_path)
 
 
 ### mapa del colombia con las ventas
-# Agrupar por ciudad y sumar las ventas
-ventas_por_ciudad = facturas_df.groupBy("ciudad").agg(sum("total").alias("total_ventas"))
-ventas_por_ciudad_pd = ventas_por_ciudad.toPandas()
+# Agrupar por ciudad y contar las veces que aparece cada ciudad
+conteo_por_ciudad = facturas_df.groupBy("ciudad").agg(
+    count("ciudad").alias("numero_de_ventas")
+)
+
+# Convertir a Pandas DataFrame para usar con Plotly
+conteo_por_ciudad_pd = conteo_por_ciudad.toPandas()
 
 # Añadir coordenadas de las ciudades
 coordenadas = {
@@ -120,28 +124,21 @@ coordenadas = {
     'Cali': {'lat': 3.4516, 'lon': -76.5320},
     'Cartagena': {'lat': 10.3910, 'lon': -75.4794}
 }
-ventas_por_ciudad_pd['latitud'] = ventas_por_ciudad_pd['ciudad'].map(lambda x: coordenadas[x]['lat'])
-ventas_por_ciudad_pd['longitud'] = ventas_por_ciudad_pd['ciudad'].map(lambda x: coordenadas[x]['lon'])
 
-# Conversión del campo 'total_ventas' a un tipo numérico
-ventas_por_ciudad_pd['total_ventas'] = pd.to_numeric(ventas_por_ciudad_pd['total_ventas'], errors='coerce')
+conteo_por_ciudad_pd['latitud'] = conteo_por_ciudad_pd['ciudad'].map(lambda x: coordenadas[x]['lat'])
+conteo_por_ciudad_pd['longitud'] = conteo_por_ciudad_pd['ciudad'].map(lambda x: coordenadas[x]['lon'])
 
-# Filtrar datos no válidos (si existen)
-ventas_por_ciudad_pd = ventas_por_ciudad_pd.dropna(subset=['total_ventas'])
-
-# Crear el mapa con Plotly y personalizar el texto de hover
+# Crear el mapa con Plotly
 fig = px.scatter_mapbox(
-    ventas_por_ciudad_pd,
+    conteo_por_ciudad_pd,
     lat="latitud",
     lon="longitud",
-    size="total_ventas",
+    size="numero_de_ventas",
     color="ciudad",
-    mapbox_style="carto-positron",
-    zoom=5,
-    center={"lat": 4.7110, "lon": -74.0721},
-    size_max=50,
     hover_name="ciudad",
-    hover_data={"latitud": True, "longitud": True, "total_ventas": True}
+    hover_data=["numero_de_ventas"],
+    zoom=5,
+    mapbox_style="carto-positron"
 )
 
 # Resaltar las ciudades específicas con colores personalizados
