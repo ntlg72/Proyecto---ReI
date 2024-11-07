@@ -62,7 +62,7 @@ services:
       - productos
 
   web1:
-    image: michelb16/proy-web
+    image: ntlg2/proy-web
     deploy:
       replicas: 1
       placement:
@@ -80,7 +80,7 @@ services:
 
 
   web2:
-    image: michelb16/proy-web
+    image: ntlg2/proy-web
     deploy:
       replicas: 1
       placement:
