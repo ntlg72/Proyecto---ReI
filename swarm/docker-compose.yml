@@ -111,7 +111,7 @@ services:
       - web2
 
   python_scripts:
-    image: michelb16/proy-scripts
+    image: ntlg2/proy-python_scripts
     deploy:
       replicas: 1
     depends_on:
