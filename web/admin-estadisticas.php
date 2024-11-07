@@ -128,26 +128,26 @@ ini_set('display_errors', 1);
     <h1>Estadísticas de Ventas</h1>
     <div class="btn-container">
         <a href="admin.php" class="btn btn-admin"><i class="fas fa-box"></i> Gestionar Productos</a>
-        <a href="/images/ventas_por_ciudad.html" class="btn btn-admin"><i class="fas fa-city"></i> Ventas por Ciudad</a>
+        <a href="ventas_por_ciudad.html" class="btn btn-admin"><i class="fas fa-city"></i> Ventas por Ciudad</a>
         <a href="logout.php" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
     </div>
 
     <div class="container">
         <div class="chart-container">
             <h2 class="chart-title">Ventas por Categoría</h2>
-            <img src="/images/ventas_por_categoria.png" alt="Ventas por Categoría" class="img-fluid" onclick="openModal(this)">
+            <img src="ventas_por_categoria.png" alt="Ventas por Categoría" class="img-fluid" onclick="openModal(this)">
         </div>
         <div class="chart-container">
             <h2 class="chart-title">Distribución de Productos por Rango de Precio</h2>
-            <img src="/images/producto_rango_precio.png" alt="Distribución de Productos por Rango de Precio" class="img-fluid" onclick="openModal(this)">
+            <img src="producto_rango_precio.png" alt="Distribución de Productos por Rango de Precio" class="img-fluid" onclick="openModal(this)">
         </div>
         <div class="chart-container">
             <h2 class="chart-title">Distribución de Frecuencia de Facturas Creadas</h2>
-            <img src="/images/frecuencia_facturas.png" alt="Distribución de Frecuencia de Facturas" class="img-fluid" onclick="openModal(this)">
+            <img src="frecuencia_facturas.png" alt="Distribución de Frecuencia de Facturas" class="img-fluid" onclick="openModal(this)">
         </div>
         <div class="chart-container">
             <h2 class="chart-title">Top de Productos Más Vendidos</h2>
-            <img src="/images/top_productos.png" alt="Top de Productos Más Vendidos" class="img-fluid" onclick="openModal(this)">
+            <img src="top_productos.png" alt="Top de Productos Más Vendidos" class="img-fluid" onclick="openModal(this)">
         </div>
     </div>
 
