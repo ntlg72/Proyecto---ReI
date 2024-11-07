@@ -99,7 +99,7 @@ services:
         constraints:
           - node.labels.type == servidorUbuntu
     ports:
-      - "8080:80"
+      - "8081:80"
     depends_on:
       - web1
       - web2
