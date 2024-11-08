@@ -238,29 +238,9 @@ Las réplicas deberían verse de la siguiente manera:
 yia1tkwqqou9   MiPunto_carritos_BD      replicated   1/1    michelb16/proy-carritodb:latest    :32002->3306/tcp
 ...
 
-5.  Acceso a la aplicación
-
-Verifica la aplicación en tu navegador, Accede a la IP de tu servidor en el puerto 8080:
-
-http://192.168.100.3:8080
-(Cambia la IP si tu localhost es diferente.)
-
-Crear cuentas:
-Administrador: Crea una cuenta para administrador con las siguiente indicaciones 
-usuario: admin
-email: admin@admin.com
-nombre: administrador
-con la clave que prefieras (se sugiere 12345).
-ciudad: Cali
-direccion: 1234
-documento de identidad: 123456 
-
-Cliente: Crea una cuenta con los datos que desees. Tienes que rellenar cada campo del formualrio para crear un usuario cliente 
-
-
  ## Generar el analisis para crear las graficas que se visualizaran en el *Administrador* de la pagina web
  
-6. Instalación de Apache Spark Instalar Java en Ubuntu 22.04 (Puede revisar https://linuxhint.com/installjava-ubuntu-22-04/)
+5. Instalación de Apache Spark Instalar Java en Ubuntu 22.04 (Puede revisar https://linuxhint.com/installjava-ubuntu-22-04/)
 ```
 sudo apt update
 ```
@@ -283,6 +263,8 @@ java -version
 #### Descargar y descomprimir Spark 
 
 Verifique en https://dlcdn.apache.org/spark/ la última versión de spark y proceda a descargarla usando wget, es posible que deba usar una versión posterior, por lo cual deberá cambiar los números de la versión en el comando de descarga. 
+
+Se genera un carpeta en el home del root  y se descarga la version de spark deseada, con los siguientes comandos:
 ```
 mkdir labSpark
 ```
@@ -296,7 +278,7 @@ wget https://dlcdn.apache.org/spark/spark3.5.3/spark-3.5.3-bin-hadoop3.tgz
 tar -xvzf spark-3.5.1-bin-hadoop3.tgz
 ```
 
-7. Corre el analisis 
+6. Corre el analisis 
 
 Instala las siguientes librerias de Python
 se deben instalar las librerias de python 
@@ -333,7 +315,7 @@ Para el worker utilizamos el siguiente comando:
 ```
 
 
-8. para inicar el trabajo de spark para genera las graficas, debes estar en el directerio del proyecto
+7. para inicar el trabajo de spark para genera las graficas, debes estar en el directerio del proyecto
 
 ```
 cd Proyecto---ReI
@@ -343,10 +325,27 @@ Luego iniciamos el trabajo del spark
 /root/labSpark/spark-3.5.3-bin-hadoop3/bin/spark-submit --jars /usr/share/java/mysql-connector-java-9.1.0.jar analisis.py
 ```
 
-9. Visualización de de las graficas
+8.  Acceso a la aplicación
 
-Como ya creamos al usaurios *admin* entramos con su usario y clave en la pagina web, en la aparatado de ver estadisticas ahcemos clik sobre el icono, y este te mostarar las graficas que genro spark, ademas en podemos ahcer click en la ver por ciudad, te mostrara las ventas por ciudad. 
+Verifica la aplicación en tu navegador, Accede a la IP de tu servidor en el puerto 8080:
+
+http://192.168.100.3:8080
+(Cambia la IP si tu localhost es diferente.)
+
+Crear cuentas:
+
+>Administrador: Crea una cuenta para administrador con las siguiente indicaciones 
+usuario: admin
+email: admin@admin.com
+nombre: administrador
+con la clave que prefieras (se sugiere 12345).
+ciudad: Cali
+direccion: 1234
+documento de identidad: 123456 
+
+Cliente: Crea una cuenta con los datos que desees. Tienes que rellenar cada campo del formualrio para crear un usuario cliente 
 
 
+Como ya creamos al usaurio *admin* entramos con su usuario y clave en la pagina web, puedes navegar por todas acceso que tiene el administrador. En la apartado de ver estadisticas hacemos clik sobre el icono , y este te mostarar las graficas que genero spark, ademas en podemos hacer click en la ventas por ciudad, te mostrara un mapa con las ventas por ciudad. 
 
-
+Puedes cerrar sesión de e ingresar con el clienete que creamos con anterioridad y navegar por la tineda y realizar compras. 
