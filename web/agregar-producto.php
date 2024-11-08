@@ -5,15 +5,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['name'];
     $stock = $_POST['stock'];
     $precio = $_POST['price'];
-    $urlimagen = $_POST['urlimagen'];
 
     // Datos del nuevo producto
     $data = array(
         "product_category" => $categoria,
         "product_name" => $nombre,
         "product_stock" => $stock,
-        "unit_price_cop" => $precio,
-        "product_url"=> $urlimagen
+        "unit_price_cop" => $precio
     );
 
     // Llamada a la API para crear un nuevo producto

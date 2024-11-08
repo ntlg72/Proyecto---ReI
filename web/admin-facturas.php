@@ -63,8 +63,15 @@
         .form-select {
             border-radius: 8px;
         }
-        .table th, .table td {
-            vertical-align: middle;
+        table {
+        width: 100%;
+        table-layout: fixed;
+        }
+
+        th, td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         }
     </style>
 </head>

@@ -303,6 +303,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
             echo '<p>Error al hacer la solicitud a la API.</p>';
         } else {
             // Ver la respuesta cruda para depuración
+            echo "Respuesta de la API: $response<br>";
 
             // Decodificar la respuesta JSON
             $producto = json_decode($response, true);
