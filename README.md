@@ -1,6 +1,6 @@
 
 
-# **Sistema de Gestión de Tienda en Microservicios**
+# **App basada en microservicios para E-commerce: despliegue en contenedores y análisis distribuido**
 
 
 # Proyecto: Redes e Infraestructura
